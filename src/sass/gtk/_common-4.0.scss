@@ -5446,6 +5446,7 @@ window {
     &.tiled-bottom {
       border-radius: 0;
       outline: none;
+      margin-top: 1px;
     }
 
     &.maximized,

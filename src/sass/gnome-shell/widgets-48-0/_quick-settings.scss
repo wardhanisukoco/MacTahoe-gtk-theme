@@ -6,7 +6,9 @@
   margin-bottom: $base_padding * 2 + 20px !important;
   margin-left: $base_padding * 2 + 20px !important;
   background-color: rgba(black, 0.01);
-  border: none;
+  // border: none;
+	border: 1px solid !important;
+	border-color: var(--gnome-popover-border-color) !important;
   @extend %quickmenu_shadow;
 
   .icon-button, .button {
