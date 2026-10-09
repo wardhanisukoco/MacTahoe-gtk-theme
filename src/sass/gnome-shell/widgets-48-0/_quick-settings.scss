@@ -1,7 +1,7 @@
 .quick-settings {
   padding: $base_padding * 5 !important;
   padding-top: $base_padding * 2 !important;
-  border-radius: 21px + $base_padding * 3 !important;
+  border-radius: $control_center_radius !important;
   margin-top: $base_padding * 2 !important;
   margin-bottom: $base_padding * 2 + 20px !important;
   margin-left: $base_padding * 2 + 20px !important;
@@ -34,6 +34,21 @@ $toggle_checked_bg_color: if($trans =='true', white, $primary_color);
 $toggle_checked_fg_color: if($trans =='true', $primary_color, white);
 $toggle_menu_checked_bg_color: if($trans =='true', rgba(white, 0.15), $popover_bg_color);
 $toggle_shadow: if($trans =='true', inset 0 0 4px rgba(white, 0.35), 0 5px 10px 0 rgba(black, 0.18));
+
+// The transparent palette above assumes dark glass. Light glass needs dark
+// content, as in macOS's light Control Center: translucent white modules and
+// accent-filled active toggles.
+@if $trans =='true' and $variant =='light' {
+  $toggle_fg_color: rgba(black, 0.85);
+  $toggle_bg_color: rgba(white, 0.45);
+  $toggle_menu_bg_color: rgba(white, 0.6);
+  $toggle_hover_bg_color: rgba(white, 0.6);
+  $toggle_active_bg_color: rgba(white, 0.75);
+  $toggle_checked_bg_color: $primary_color;
+  $toggle_checked_fg_color: white;
+  $toggle_menu_checked_bg_color: rgba(white, 0.6);
+  $toggle_shadow: inset 0 0 0 1px rgba(white, 0.5);
+}
 
 .quick-toggle, .quick-toggle-has-menu {
   min-width: 100px;
@@ -241,8 +256,8 @@ $toggle_shadow: if($trans =='true', inset 0 0 4px rgba(white, 0.35), 0 5px 10px 
   background-color: $toggle_bg_color;
   border-radius: $wm_radius;
   box-shadow: $toggle_shadow !important;
-  min-height: 40px;
-  padding: $base_padding * 3 !important;
+  min-height: 32px;
+  padding: $base_padding * 1.5 $base_padding * 3 !important;
   color: $toggle_fg_color;
 
   & > StBoxLayout {
@@ -251,7 +266,7 @@ $toggle_shadow: if($trans =='true', inset 0 0 4px rgba(white, 0.35), 0 5px 10px 
 
   .icon-button {
     padding: $base_padding * 1.5;
-    margin: $base_padding * 2 0;
+    margin: 0;
     color: $toggle_fg_color;
 
     &:hover {
